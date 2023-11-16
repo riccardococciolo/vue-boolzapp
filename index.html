@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- wrapper -->
+        <div class="wrapper flex">
+            <div class="wrapper-2">
+            </div>
+            <!-- main-block -->
+            <div class="main-block">
+                <!-- left-block -->
+                <div class="left-block flex column">
+                    <!-- left-bar -->
+                    <div class="left-bar flex flex-ac">
+                        <div class="pp">
+                            <img src="img/avatar_io.jpg" alt="profile picture 1">
+                        </div>
+                        <div class="left-widget flex flex-ac">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <!-- /left-bar -->
+
+                    <!-- notification -->
+                    <div class="notification flex flex-ac">
+                        <div class="notification-icon">
+                            <div class="circle">
+                                <i class="fa-solid fa-bell-slash"></i>
+                            </div>
+                        </div>
+                        <div class="notification-text">
+                            <div class="fs pb-05">
+                                Ricevi notifiche di nuovi messaggi
+                            </div>
+                            <div>
+                                <a class="grey" href="">Attiva notifiche desktop</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /notification -->
+
+                    <!-- search -->
+                    <div class="search flex flex-ac">
+                        <div class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+                    </div>
+                    <!-- /search -->
+
+                    <!-- chat-box -->
+                    <div class="chat-box">
+                        <div v-for="(contact, i) in contacts" class="left-row flex flex-ac">
+                            <div class="pp">
+                                <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="profile picture 1">
+                            </div>
+                            <div class="profile-name flex">
+                                <h3>{{ contact.name }}</h3>
+                                <span>16:15</span>
+                                <p class="full-width">{{ contact.messages[contact.messages.length - 1].message }}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="left-row flex flex-ac">
+                        <div class="pp">
+                            <img src="img/avatar_3.jpg" alt="profile picture 1">
+                        </div>
+                        <div class="profile-name flex">
+                            <h3>Fabio</h3>
+                            <span>16:15</span>
+                            <p class="full-width">Lorem ipsum dolor sit amet</p>
+                        </div>
+                    </div>
+                    <div class="left-row flex flex-ac">
+                        <div class="pp">
+                            <img src="img/avatar_3.jpg" alt="profile picture 1">
+                        </div>
+                        <div class="profile-name flex flex-ac">
+                            <h3>Samuele</h3>
+                            <span>16:15</span>
+                            <p class="full-width">Lorem ipsum dolor sit amet</p>
+                        </div>
+                    </div>
+                    <div class="left-row flex flex-ac">
+                        <div class="pp">
+                            <img src="img/avatar_4.jpg" alt="profile picture 1">
+                        </div>
+                        <div class="profile-name flex flex-ac">
+                            <h3>Alessandro B.</h3>
+                            <span>16:15</span>
+                            <p class="full-width">Lorem ipsum dolor sit amet</p>
+                        </div>
+                    </div>
+                    <div class="left-row flex flex-ac">
+                        <div class="pp">
+                            <img src="img/avatar_5.jpg" alt="profile picture 1">
+                        </div>
+                        <div class="profile-name flex">
+                            <h3>Alessandro L.</h3>
+                            <span>16:15</span>
+                            <p class="full-width">Lorem ipsum dolor sit amet</p>
+                        </div>
+                    </div>
+                    <div class="left-row flex flex-ac">
+                        <div class="pp">
+                            <img src="img/avatar_6.jpg" alt="profile picture 1">
+                        </div>
+                        <div class="profile-name flex">
+                            <h3>Claudia</h3>
+                            <span>16:15</span>
+                            <p class="full-width">Lorem ipsum dolor sit amet</p>
+                        </div>
+                    </div>
+                    <div class="left-row flex flex-ac">
+                        <div class="pp">
+                            <img src="img/avatar_7.jpg" alt="profile picture 1">
+                        </div>
+                        <div class="profile-name flex">
+                            <h3>Federico</h3>
+                            <span>16:15</span>
+                            <p class="full-width">Lorem ipsum dolor sit amet</p>
+                        </div>
+                    </div> -->
+                    </div>
+                    <!-- /chat-box -->
+                </div>
+
+                <!-- /left-block -->
+
+                <div class="right-block flex column">
+                    <div class="pp-chat flex flex-ac">
+                        <div class="name flex flex-ac">
+                            <div class="pp">
+                                <img src="img/avatar_1.jpg" alt="profile picture 1">
+                            </div>
+                            <div class="flex-ac">
+                                <h3>Michele</h3>
+                                <p class="full-width">Ultimo accesso alle 16:26</p>
+                            </div>
+                        </div>
+                        <div class="right-widget flex flex-ac">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <div class="chat-page flex column">
+                        <div class="message m-green m-right flex">
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, id nihil harum ipsa
+                                sed
+                                cum aliquid mollitia quos, quisquam laboriosam aut non repudiandae optio ut sapiente
+                                numquam
+                                voluptatibus doloribus quibusdam?
+                            </p>
+                            <div class="message-widget flex column">
+                                <i class="fa-solid fa-angle-down menu">
+                                    <div class="drop-down-menu flex column">
+                                        <span class="">Info messaggio</span>
+                                        <span class="">Cancella messaggio</span>
+                                    </div>
+                                </i>
+                                <span class="hour">16:13</span>
+                            </div>
+                        </div>
+                        <div class="message m-white flex">
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque provident magni autem
+                                beatae
+                                error expedita numquam deserunt assumenda illum fugiat id doloribus architecto, nostrum
+                                suscipit ex dolor cumque. Nesciunt, modi?
+                            </p>
+                            <div class="message-widget flex column">
+                                <i class="fa-solid fa-angle-down menu">
+                                    <div class="drop-down-menu flex column">
+                                        <span class="">Info messaggio</span>
+                                        <span class="">Cancella messaggio</span>
+                                    </div>
+                                </i>
+                                <span>16:13</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-bar flex flex-ac">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <div class="right-bar">
+                            <div class="search-bar">
+                                <input type="text" placeholder="Scrivi un messaggio">
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- /main-block -->
+        </div>
+        <!-- /wrapper -->
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
