@@ -165,7 +165,8 @@ createApp ({
                         }
                     ],
                 }
-            ]
+            ],
+            curIndex: 0,
         }
     }
 }).mount("#app");

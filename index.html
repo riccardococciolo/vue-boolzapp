@@ -160,13 +160,9 @@
                         </div>
                     </div>
                     <div class="chat-page flex column">
-                        <div class="message m-green m-right flex">
+                        <div v-for="(text, index) in contacts[curIndex].messages" class="message flex" :class="(text.status === 'sent') ? 'm-green m-right' : 'm-white'">
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, id nihil harum ipsa
-                                sed
-                                cum aliquid mollitia quos, quisquam laboriosam aut non repudiandae optio ut sapiente
-                                numquam
-                                voluptatibus doloribus quibusdam?
+                                {{ text.message }}
                             </p>
                             <div class="message-widget flex column">
                                 <i class="fa-solid fa-angle-down menu">
@@ -178,7 +174,7 @@
                                 <span class="hour">16:13</span>
                             </div>
                         </div>
-                        <div class="message m-white flex">
+                        <!-- <div class="message m-white flex">
                             <p>
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque provident magni autem
                                 beatae
@@ -194,7 +190,7 @@
                                 </i>
                                 <span>16:13</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="chat-bar flex flex-ac">
                         <i class="fa-regular fa-face-smile"></i>
