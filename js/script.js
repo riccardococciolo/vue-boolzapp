@@ -167,6 +167,31 @@ createApp ({
                 }
             ],
             curIndex: 0,
+            newMess: '',
         }
-    }
+    }, 
+    methods: {
+        openChat (index) {
+            this.curIndex = index
+        },
+        sendMessage() {
+            if (this.newMess.trim() !== '') { // Assicurati che il messaggio non sia vuoto
+              this.contacts[this.curIndex].messages.push({
+                date: '10/01/2020 15:50:00',
+                message: this.newMess,
+                status: 'sent',
+              });
+      
+              this.newMess = '';
+              
+              setTimeout(() => {
+                this.contacts[this.curIndex].messages.push({
+                    date: '10/01/2020 15:50:00',
+                    message: 'ok',
+                    status: 'received',
+                  });
+              }, 1000);// Azzera l'input del nuovo messaggio
+            }
+        }
+    },
 }).mount("#app");

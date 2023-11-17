@@ -63,10 +63,9 @@
                         </div>
                     </div>
                     <!-- /search -->
-
                     <!-- chat-box -->
                     <div class="chat-box">
-                        <div v-for="(contact, i) in contacts" class="left-row flex flex-ac">
+                        <div @click="openChat(i)" v-for="(contact, i) in contacts" class="left-row flex flex-ac">
                             <div class="pp">
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="profile picture 1">
                             </div>
@@ -149,7 +148,7 @@
                                 <img src="img/avatar_1.jpg" alt="profile picture 1">
                             </div>
                             <div class="flex-ac">
-                                <h3>Michele</h3>
+                                <h3>{{ contacts[curIndex].name }}</h3>
                                 <p class="full-width">Ultimo accesso alle 16:26</p>
                             </div>
                         </div>
@@ -160,21 +159,27 @@
                         </div>
                     </div>
                     <div class="chat-page flex column">
-                        <div v-for="(text, index) in contacts[curIndex].messages" class="message flex" :class="(text.status === 'sent') ? 'm-green m-right' : 'm-white'">
-                            <p>
-                                {{ text.message }}
-                            </p>
-                            <div class="message-widget flex column">
-                                <i class="fa-solid fa-angle-down menu">
-                                    <div class="drop-down-menu flex column">
-                                        <span class="">Info messaggio</span>
-                                        <span class="">Cancella messaggio</span>
-                                    </div>
-                                </i>
-                                <span class="hour">16:13</span>
-                            </div>
+
+                        <div v-for="(text, index) in contacts[curIndex].messages" class="message flex"
+                            :class="(text.status === 'sent') ? 'm-green m-right' : 'm-white'">
+                            <!-- <div class="full-width"> -->
+                                <p>
+                                    {{ text.message }}
+                                </p>
+                                <div class="message-widget flex column">
+                                    <i class="fa-solid fa-angle-down menu">
+                                        <div class="drop-down-menu flex column">
+                                            <span class="">Info messaggio</span>
+                                            <span class="">Cancella messaggio</span>
+                                        </div>
+                                    </i>
+                                    <span class="hour">16:13</span>
+                                </div>
+                            <!-- </div> -->
                         </div>
-                        <!-- <div class="message m-white flex">
+
+
+                            <!-- <div class="message m-white flex">
                             <p>
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque provident magni autem
                                 beatae
@@ -191,23 +196,25 @@
                                 <span>16:13</span>
                             </div>
                         </div> -->
-                    </div>
-                    <div class="chat-bar flex flex-ac">
-                        <i class="fa-regular fa-face-smile"></i>
-                        <div class="right-bar">
-                            <div class="search-bar">
-                                <input type="text" placeholder="Scrivi un messaggio">
-                            </div>
                         </div>
-                        <i class="fa-solid fa-microphone"></i>
+                        <div class="chat-bar flex flex-ac">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <div class="right-bar">
+                                <div class="search-bar">
+                                    <label for="chat"></label>
+                                    <input @keyup.enter="sendMessage(this.curIndex)" type="text" placeholder="Scrivi un messaggio" id="chat"
+                                        v-model="newMess">
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
                     </div>
                 </div>
+                <!-- /main-block -->
             </div>
-            <!-- /main-block -->
+            <!-- /wrapper -->
         </div>
-        <!-- /wrapper -->
-    </div>
-    <script src="js/script.js"></script>
+        <script src="js/script.js"></script>
 </body>
 
 </html>
