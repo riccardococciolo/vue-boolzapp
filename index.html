@@ -59,13 +59,14 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div class="search-bar">
-                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                            <label for="search"></label>
+                            <input @keyup="searchContact" type="text" placeholder="Cerca o inizia una nuova chat" id="search" v-model="searchText">
                         </div>
                     </div>
                     <!-- /search -->
                     <!-- chat-box -->
                     <div class="chat-box">
-                        <div @click="openChat(i)" v-for="(contact, i) in contacts" class="left-row flex flex-ac">
+                        <div v-show="contact.visible" @click="openChat(i)" v-for="(contact, i) in contacts" class="left-row flex flex-ac">
                             <div class="pp">
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="profile picture 1">
                             </div>
@@ -145,7 +146,7 @@
                     <div class="pp-chat flex flex-ac">
                         <div class="name flex flex-ac">
                             <div class="pp">
-                                <img src="img/avatar_1.jpg" alt="profile picture 1">
+                                <img :src="'img/avatar' + contacts[curIndex].avatar + '.jpg'" alt="profile picture 1">
                             </div>
                             <div class="flex-ac">
                                 <h3>{{ contacts[curIndex].name }}</h3>

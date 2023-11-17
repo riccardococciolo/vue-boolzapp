@@ -168,6 +168,7 @@ createApp ({
             ],
             curIndex: 0,
             newMess: '',
+            searchText: '',
         }
     }, 
     methods: {
@@ -192,6 +193,12 @@ createApp ({
                   });
               }, 1000);// Azzera l'input del nuovo messaggio
             }
+        },
+        searchContact() {
+            this.contacts.forEach(contact => {
+                const contactName = contact.name.toLowerCase();
+                contact.visible = contactName.includes(this.searchText.trim());
+            })
         }
     },
 }).mount("#app");
