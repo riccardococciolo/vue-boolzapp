@@ -9,6 +9,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -72,7 +73,7 @@
                             </div>
                             <div class="profile-name flex">
                                 <h3>{{ contact.name }}</h3>
-                                <span>16:15</span>
+                                <span>{{ contact.messages[contact.messages.length - 1].date }}</span>
                                 <p class="full-width">{{ contact.messages[contact.messages.length - 1].message }}</p>
                             </div>
                         </div>
@@ -150,7 +151,7 @@
                             </div>
                             <div class="flex-ac">
                                 <h3>{{ contacts[curIndex].name }}</h3>
-                                <p class="full-width">Ultimo accesso alle 16:26</p>
+                                <p class="full-width">Ultimo accesso alle {{ contacts[curIndex].messages[contacts[curIndex].messages.length - 1].date }}</p>
                             </div>
                         </div>
                         <div class="right-widget flex flex-ac">
@@ -168,13 +169,13 @@
                                     {{ text.message }}
                                 </p>
                                 <div class="message-widget flex column">
-                                    <i class="fa-solid fa-angle-down menu">
-                                        <div class="drop-down-menu flex column">
+                                    <i @click="dropMenu(index)" class="fa-solid fa-angle-down menu">
+                                        <div v-show="text.menu" class="drop-down-menu flex column">
                                             <span class="">Info messaggio</span>
-                                            <span class="">Cancella messaggio</span>
+                                            <span @click="remove(index)" class="">Cancella messaggio</span>
                                         </div>
                                     </i>
-                                    <span class="hour">16:13</span>
+                                    <span class="hour">{{ text.date }}</span>
                                 </div>
                             <!-- </div> -->
                         </div>

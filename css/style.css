@@ -367,6 +367,7 @@ a {
 }
 
 .message p {
+    width: 100%;
     padding: 1rem 0 1.5rem 1rem;
 }
 
@@ -396,11 +397,8 @@ a {
     gap: 1rem;
     box-shadow:  1px  1px 10px #b3b3b3,
                  -1px -1px 10px #bebebe;
-    display: none;
-}
-
-.message-widget .menu:active .drop-down-menu {
     display: flex;
+    z-index: 999;
 }
 
 @media screen and (max-width: 540px) {
