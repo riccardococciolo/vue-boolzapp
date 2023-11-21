@@ -192,9 +192,30 @@ createApp ({
             curIndex: 0,
             newMess: '',
             searchText: '',
+            answer: '',
         }
+    },
+    created() {
+       
     }, 
     methods: {
+        sendRequest: async function() {
+            try {
+                const answer = await axios.post('https://api.openai.com/v1/chat/completions', {
+                    model: 'text-davinci-003',
+                    messages: [{ role: 'user', content: this.newMess }],
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer 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',
+                    },
+                });
+
+                this.answer = answer.data.choices[0].message.content;
+            } catch (error) {
+                console.error('Errore nella richiesta a ChatGPT:', error);
+            }
+        },
         openChat (index) {
             this.curIndex = index
         },
@@ -214,12 +235,13 @@ createApp ({
               setTimeout(() => {
                 this.contacts[this.curIndex].messages.push({
                     date: now.toFormat("HH:mm"),
-                    message: 'ok',
+                    message: this.answer,
                     status: 'received',
                     menu: false,
                   });
               }, 1000);// Azzera l'input del nuovo messaggio
             }
+            this.sendRequest();
         },
         searchContact() {
             this.contacts.forEach(contact => {
